@@ -1,0 +1,45 @@
+{%extends 'layout.html'%}
+{%block content%}
+<div class="mainLeft">
+    {%for content in contents%}
+    <div class="listBox">
+        <h1>{{content.title}}</h1>
+        <p class="colDefault">
+            作者:<span class="colInfo">{{content.user.username}}</span>
+            时间:<span class="colInfo">{{content.addTime|date('Y-m-d H:i:s',-8*60)}}</span>
+            阅读:<span class="colInfo">{{content.views}}</span>
+            评论:<span class="colInfo">0 </span>
+        </p>
+        <dfn><p>{{content.description}}</p></dfn>
+        <div class="function"><a href="view?contentid={{content.id}}" id="hover">阅读全文</a></div>
+    </div>
+    {% endfor %}
+
+    <div class="pager">
+        <ul class="clear">
+
+            <li class="previous">
+                {% if page<=1%}
+                <button class="mybutton" style="background: #c4c4c4;float: left"><a style="color:white;">上一页</a> </button>
+                {%else%}
+                <button class="mybutton" style="float: left" href="/admin"><a href="/?category={{category}}&page={{page-1}}" style="color:white">上一页</a> </button>
+                {%endif%}
+
+            </li>
+
+            <li>
+                {% if pages > 0%}<strong style="color: #ffa500">{{page}} / {{pages}}</strong>{%endif%}
+            </li>
+
+            <li class="next">
+                {% if page>=pages%}
+                <button class="mybutton" style="background: #c4c4c4"><a style="color:white;">下一页</a> </button>
+                {%else%}
+                <button class="mybutton"><a href="/?category={{category}}&page={{page+1}}" style="color:white">下一页</a> </button>
+                {%endif%}
+
+            </li>
+        </ul>
+    </div>
+</div>
+{%endblock%}

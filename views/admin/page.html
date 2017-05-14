@@ -1,0 +1,13 @@
+<nav aria-label="...">
+    <ul class="pager">
+        <li><a href="?page={{page-1}}"><span aria-hidden="true">&larr;</span>上一页</a></li>
+        <li style="color: #337ab7">
+            {% if page %}
+            第{{page}}页
+            {% endif %}/
+            {% if pages %}
+            共{{pages}}页
+            {% endif %}</li>
+        <li><a href="?page={{page+1}}">下一页<span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
